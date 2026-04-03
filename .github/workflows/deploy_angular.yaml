@@ -25,7 +25,7 @@ jobs:
         run: ng build --configuration production --base-href=/mechanicapp/
 
       - name: Deploy
-        uses: angular-cli-ghpages
+        uses: ng add angular-cli-ghpages
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build_dir: sec_deploy/mechanicapp/frontend/
