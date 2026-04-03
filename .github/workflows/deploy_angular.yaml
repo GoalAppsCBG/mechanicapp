@@ -27,20 +27,11 @@ jobs:
         run: npm install
 
       - name: Build Angular
-<<<<<<< HEAD
         run: |
           npm run build -- --configuration production --base-href=/mechanicapp/
-=======
-        run: ng build --configuration production --base-href=/mechanicapp/ 
->>>>>>> 63b4aec039d0fcadbdec2b09ca7a8faa865d8386
 
-<<<<<<< HEAD
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-=======
-      - name: Deploy
-        uses: angular-cli-ghpages
->>>>>>> 63b4aec039d0fcadbdec2b09ca7a8faa865d8386
         with:
           path: sec_deploy/mechanicapp
 
