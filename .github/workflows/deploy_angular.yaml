@@ -5,16 +5,21 @@ on:
     branches:
       - sec_deploy
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -22,10 +27,27 @@ jobs:
         run: npm install
 
       - name: Build Angular
+<<<<<<< HEAD
+        run: |
+          npm run build -- --configuration production --base-href=/mechanicapp/
+=======
         run: ng build --configuration production --base-href=/mechanicapp/ 
+>>>>>>> 63b4aec039d0fcadbdec2b09ca7a8faa865d8386
 
+<<<<<<< HEAD
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+=======
       - name: Deploy
         uses: angular-cli-ghpages
+>>>>>>> 63b4aec039d0fcadbdec2b09ca7a8faa865d8386
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          build_dir: sec_deploy/mechanicapp/frontend/
+          path: sec_deploy/mechanicapp
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
