@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Angular
-        run: ng build --configuration production --base-href=/mechanicapp/
+        run: ng build --configuration production --base-href=/mechanicapp/ 
 
       - name: Deploy
         uses: ng add angular-cli-ghpages
