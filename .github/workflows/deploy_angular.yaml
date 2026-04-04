@@ -28,12 +28,12 @@ jobs:
 
       - name: Build Angular
         run: |
-          npm run build -- --configuration production --base-href=/mechanicapp/
+          npm run build -- --configuration production --base-href=/mechanicapp/frontend/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sec_deploy/mechanicapp
+          path: sec_deploy/mechanicapp/frontend
 
   deploy:
     needs: build
