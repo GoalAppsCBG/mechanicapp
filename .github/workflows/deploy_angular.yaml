@@ -19,13 +19,16 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
 
       - name: Build Angular app
-        run: npx ng build --configuration production --base-href "/mechanicapp/"
+        run: ng build --configuration production --base-href "/mechanicapp/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/mechanicapp/browser
+          publish_dir: ./dist/mecapp/browser
